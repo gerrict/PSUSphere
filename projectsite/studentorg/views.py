@@ -5,12 +5,12 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from studentorg.models import Organization, OrgMember, Student, College, Program
 from studentorg.forms import OrganizationForm, OrgMemberForm, StudentForm, CollegeForm, ProgramForm
 from django.urls import reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin
 
-class HomePageView(ListView):
+class HomePageView(LoginRequiredMixin, ListView):
     model = Organization
     context_object_name = 'home'
     template_name = "home.html"
-
 # Create your views here.
 #Organization
 class OrganizationList(ListView):
